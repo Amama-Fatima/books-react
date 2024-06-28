@@ -1,9 +1,18 @@
-import {Link} from 'react-router-dom'
-import './BookList.css'
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const Book = ({ id, cover_img, title, author, edition_count, first_publish_year }) => {
+import "./BookList.css";
+
+const Book = ({
+  id,
+  cover_img,
+  title,
+  author,
+  edition_count,
+  first_publish_year,
+}) => {
   return (
-    <div className='book-item flex flex-column flex-sb'>
+    <div className="book-item flex flex-column flex-sb">
       <div className="book-item-img">
         <img src={cover_img} alt="cover" />
       </div>
@@ -14,25 +23,33 @@ const Book = ({ id, cover_img, title, author, edition_count, first_publish_year 
           </div>
         </Link>
         <div className="book-item-info-item author fw-4 fs-15">
-          <span className='text-capitalize fw-7'>Author: </span>
-          <span>{Array.isArray(author) ? author.join(', ') : author || 'Unknown'}</span>
+          <span className="text-capitalize fw-7">Author: </span>
+          <span>
+            {Array.isArray(author) ? author.join(", ") : author || "Unknown"}
+          </span>
         </div>
 
         <div className="book-item-info-item edition-count fw-4 fs-15">
-          <span className='text-capitalize fw-7'>Total Editions: </span>
+          <span className="text-capitalize fw-7">Total Editions: </span>
           <span>{edition_count}</span>
         </div>
 
         <div className="book-item-info-item publish-year fw-4 fs-15">
-          <span className='text-capitalize fw-7'>First Publish Year: </span>
+          <span className="text-capitalize fw-7">First Publish Year: </span>
           <span>{first_publish_year}</span>
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
+
+Book.propTypes = {
+  id: PropTypes.number.isRequired,
+  cover_img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  edition_count: PropTypes.string.isRequired,
+  first_publish_year: PropTypes.string.isRequired,
+};
 
 export default Book;
-
-
